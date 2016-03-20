@@ -4,6 +4,7 @@ export * from './decorators/form.component';
 export * from './decorators/route.component';
 
 // interfaces
+export * from './interfaces/ianalytics';
 export * from './interfaces/iconsole';
 export * from './interfaces/iwindow';
 export * from './interfaces/ilang';
