@@ -3,9 +3,11 @@ import {provide} from 'angular2/core';
 
 // libs
 import {Store} from '@ngrx/store';
+import {Angulartics2} from 'angulartics2';
+import {Angulartics2Segment} from 'angulartics2/src/providers/angulartics2-segment';
 
 // app
-import {WindowService, ConsoleService, LogService} from '../../core.framework/index';
+import {WindowService, ConsoleService, LogService, AnalyticsService} from '../../core.framework/index';
 
 // mocks
 import {WindowMock} from '../mocks/window.mock';
@@ -17,9 +19,12 @@ export function TEST_COMMON_PROVIDERS(options?: any): any[] {
   // state:        = needs Store (via ngrx/store)
   
   let providers = [
-    LogService,
     provide(ConsoleService, { useValue: console }),
-    provide(WindowService, { useClass: (options && options.Window) || WindowMock })
+    provide(WindowService, { useClass: (options && options.Window) || WindowMock }),
+    LogService,
+    Angulartics2,
+    Angulartics2Segment,
+    AnalyticsService
   ];
 
   if (options) {

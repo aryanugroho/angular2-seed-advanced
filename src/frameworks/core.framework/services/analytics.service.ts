@@ -3,7 +3,7 @@ import {Injectable} from 'angular2/core';
 
 // libs
 import {Angulartics2} from 'angulartics2';
-import {Angulartics2Segment} from 'angulartics2/providers/angulartics2-segment';
+import {Angulartics2Segment} from 'angulartics2/src/providers/angulartics2-segment';
 
 // app
 import {CoreConfigService, IAnalyticsProperties} from '../../core.framework/index';
@@ -22,7 +22,7 @@ export class AnalyticsService {
     angulartics2.developerMode(CoreConfigService.IS_DEBUG_MODE());
   }
 
-  public eventTrack(action: string, properties: IAnalyticsProperties) {
+  public track(action: string, properties: IAnalyticsProperties) {
     this.segment.eventTrack(action, properties);
   }
 
@@ -32,6 +32,13 @@ export class AnalyticsService {
    **/
   public pageTrack(path: string, location: any) {
     this.segment.pageTrack(path, location);
-  }  
+  }
+
+  /**
+   * Identify authenticated users
+   **/
+  public identify(properties: any) {
+    this.segment.setUserProperties(properties);
+	}  
 
 }

@@ -9,7 +9,7 @@ CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.WEB;
 CoreConfigService.DEBUG.LEVEL_4 = true;
 
 // app
-import {ConsoleService, WindowService} from './frameworks/core.framework/index';
+import {CORE_PROVIDERS} from './frameworks/core.framework/index';
 import {MultilingualService} from './frameworks/i18n.framework/index';
 import {APP_PROVIDERS, AppConfigService} from './frameworks/app.framework/index';
 import {AppComponent} from './components/app/app.component';
@@ -26,8 +26,7 @@ if ('<%= ENV %>' === 'prod') {
 bootstrap(AppComponent, [
   ENV_PROVIDERS,
   provide(APP_BASE_HREF, { useValue: '<%= APP_BASE %>' }),
-  provide(WindowService, { useValue: window }),
-  provide(ConsoleService, { useValue: console }),
+  CORE_PROVIDERS,
   APP_PROVIDERS
 ])
 .catch(err => console.error(err));
